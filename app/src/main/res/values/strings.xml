@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Verity Test</string>
+    <string name="continue_btn">Continuar</string>
+    <string name="back_btn">Voltar</string>
+
+    <!-- User Input -->
+    <string name="user_input_header">Em busca do conhecimento</string>
+    <string name="user_input_paragraph">Precisamos saber qual é seu usuário do github para mostrarmos detalhes sobre seu perfil.</string>
+    <string name="user_input_hint">Usuário do github</string>
+    <string name="user_input_dialog_title">Oops!</string>
+    <string name="user_input_dialog_description">Houve um erro ao tentar buscar seu usário.</string>
+    <string name="user_input_empty_dialog_description">O nome do seu usário não pode ser vazio.</string>
 </resources>

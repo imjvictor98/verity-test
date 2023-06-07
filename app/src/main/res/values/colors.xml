@@ -7,4 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="white_100">#F9F9F9</color>
+    <color name="gray">#A9A9A9</color>
+    <color name="yellow">#FFE500</color>
+    <color name="bkg">#303030</color>
+    <color name="bkg_btn_primary">#5F2EEA</color>
+    <color name="text_btn_primary">#F7F7FC</color>
+    <color name="loading_btn_primary">#FCFCFC</color>
+    <color name="error">#C30052</color>
+    <color name="active_text">#14142B</color>
+    <color name="label_text">#6E7191</color>
 </resources>

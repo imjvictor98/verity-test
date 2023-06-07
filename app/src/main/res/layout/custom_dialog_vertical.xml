@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/margin_custom_dialog_default">
+
+    <ImageButton
+        android:id="@+id/custom_dialog_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="contentDescription"
+        android:padding="8dp"
+        android:background="?attr/selectableItemBackground"
+        android:src="@drawable/ic_baseline_clear_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/bkg_btn_primary"/>
+
+    <TextView
+        android:id="@+id/custom_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/hubot_sans_medium_semi"
+        tools:text="Confirme seus dados"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/custom_dialog_close" />
+
+    <TextView
+        android:id="@+id/custom_dialog_sub_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/hubot_sans_medium_semi"
+        tools:text="Meu e-mail é: "
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textColor="@color/label_text"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/custom_dialog_title" />
+
+    <TextView
+        android:id="@+id/custom_dialog_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/hubot_sans_medium_semi"
+        tools:text="fulano@gmail.com"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/custom_dialog_sub_title" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/custom_dialog_primary_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/hubot_sans_medium_semi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/custom_dialog_description"
+        tools:text="Tente novamente" />
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/MaterialBtnOutlined"
+        android:id="@+id/custom_dialog_secondary_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        app:strokeColor="@color/bkg_btn_primary"
+        android:fontFamily="@font/hubot_sans_medium_semi"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/custom_dialog_primary_btn"
+        tools:text="Voltar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

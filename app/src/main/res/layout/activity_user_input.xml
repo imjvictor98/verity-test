@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.user.input.UserInputActivity"
+    android:background="@color/bkg"
+    android:padding="@dimen/margin_default">
+
+    <TextView
+        android:id="@+id/user_input_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/hubot_sans_medium_semi"
+        android:letterSpacing="0.02"
+        android:elegantTextHeight="true"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/user_input_header" />
+
+    <TextView
+        android:id="@+id/user_input_paragraph"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elegantTextHeight="true"
+        android:fontFamily="@font/hubot_sans_medium_semi"
+        android:letterSpacing="0.02"
+        android:gravity="center"
+        android:textColor="@color/gray"
+        android:textSize="16sp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_input_header"
+        android:text="@string/user_input_paragraph" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/MaterialTIL"
+        android:id="@+id/user_input_tl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:hint="@string/user_input_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_input_paragraph">
+
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/MaterialET"
+            android:id="@+id/user_input_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:imeOptions="actionSend"
+            android:lines="0"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <FrameLayout
+        android:id="@+id/user_input_btn_container"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_input_tl" >
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/user_input_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hubot_sans_medium_semi"
+            android:letterSpacing="0.09"
+            android:text="@string/continue_btn"
+            android:textAllCaps="false"
+            app:cornerRadius="@dimen/corner_radius_default" />
+
+        <ProgressBar
+            android:id="@+id/user_input_loading_btn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:indeterminate="true"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/loading_btn_primary" />
+    </FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
