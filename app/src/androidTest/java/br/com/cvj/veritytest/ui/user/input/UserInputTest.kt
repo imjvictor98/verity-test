@@ -8,12 +8,17 @@ import br.com.cvj.veritytest.R
 import br.com.cvj.veritytest.base.CFBaseTest
 import br.com.cvj.veritytest.ui.user.profile.UserProfileActivity
 import br.com.cvj.veritytest.util.ScreenRobot
+import org.junit.BeforeClass
 import org.junit.Rule
 import org.junit.Test
 
 class UserInputTest: CFBaseTest() {
     companion object {
         private const val USERNAME_TO_BE_TYPED = "imjvictor98"
+        @BeforeClass
+        fun clearCacheThroughAdb() {
+            InstrumentationRegistry.getInstrumentation().uiAutomation.executeShellCommand("pm clear br.com.cvj.veritytest").close()
+        }
     }
 
     @get: Rule
@@ -34,6 +39,16 @@ class UserInputTest: CFBaseTest() {
     }
 
     @Test
+    fun on_user_not_put_username_then_click_in_continue_btn_error_message_appears() {
+        userInputScenario.scenario
+
+        ScreenRobot
+            .withRobot(UserInputRobot::class.java)
+            .clickOnContinueButton()
+            .checkIsDisplayed(R.id.custom_dialog_horizontal_container)
+    }
+
+    @Test
     fun on_user_do_not_have_github_account_saved() {
         userInputScenario.scenario
 
@@ -41,14 +56,6 @@ class UserInputTest: CFBaseTest() {
             .withRobot(UserInputRobot::class.java)
             .inputUsername(USERNAME_TO_BE_TYPED)
             .clickOnContinueButton()
-            .ensureProfileIsVisible()
-    }
-
-    //quando o usuário já tem os dados salvos e a tela de perfil aparece
-    @Test
-    fun on_user_has_account_saved_and_redirected_to_profile() {
-        ScreenRobot
-            .withRobot(UserInputRobot::class.java)
             .ensureProfileIsVisible()
     }
 }

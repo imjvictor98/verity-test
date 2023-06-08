@@ -17,6 +17,34 @@
             </AndroidTestResultsTableState>
           </value>
         </entry>
+        <entry key="-918985015">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="RQCT30326YH" value="120" />
+                  <entry key="Tests" value="360" />
+                  <entry key="samsung&#10; SM-A536E" value="120" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
+        <entry key="-843524663">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="RQCT30326YH" value="120" />
+                  <entry key="Tests" value="360" />
+                  <entry key="samsung&#10; SM-A536E" value="120" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
         <entry key="-321615053">
           <value>
             <AndroidTestResultsTableState>
