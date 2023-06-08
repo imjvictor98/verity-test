@@ -1,6 +1,7 @@
 package br.com.cvj.veritytest.ui.user.input
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.platform.app.InstrumentationRegistry
 import br.com.cvj.veritytest.R
@@ -24,9 +25,12 @@ class UserInputTest: CFBaseTest() {
     }
 
     private fun clearSharedPreferences() {
-        val context =  InstrumentationRegistry.getInstrumentation().targetContext
-        val sharedPrefs = context.getSharedPreferences("VERITY_STORAGE", Context.MODE_PRIVATE)
-        sharedPrefs.edit().clear().apply()
+        getSharedPreferences().edit().clear().apply()
+    }
+
+    private fun getSharedPreferences(): SharedPreferences {
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        return context.getSharedPreferences("VERITY_STORAGE", Context.MODE_PRIVATE)
     }
 
     @Test
@@ -40,18 +44,25 @@ class UserInputTest: CFBaseTest() {
             .ensureProfileIsVisible()
     }
 
+    //quando o usuário já tem os dados salvos e a tela de perfil aparece
+    @Test
+    fun on_user_has_account_saved_and_redirected_to_profile() {
+        ScreenRobot
+            .withRobot(UserInputRobot::class.java)
+            .ensureProfileIsVisible()
+    }
+}
 
-    class UserInputRobot: ScreenRobot<UserInputRobot>() {
-        fun inputUsername(username: String): UserInputRobot {
-            return enterTextIntoView(R.id.user_input_et, username)
-        }
+class UserInputRobot: ScreenRobot<UserInputRobot>() {
+    fun inputUsername(username: String): UserInputRobot {
+        return enterTextIntoView(R.id.user_input_et, username)
+    }
 
-        fun clickOnContinueButton(): UserInputRobot {
-            return clickOkOnView(R.id.user_input_btn)
-        }
+    fun clickOnContinueButton(): UserInputRobot {
+        return clickOkOnView(R.id.user_input_btn)
+    }
 
-        fun ensureProfileIsVisible(): UserInputRobot {
-            return checkComponentIsVisible(UserProfileActivity::class.java.name)
-        }
+    fun ensureProfileIsVisible(): UserInputRobot {
+        return checkComponentIsVisible(UserProfileActivity::class.java.name)
     }
 }
