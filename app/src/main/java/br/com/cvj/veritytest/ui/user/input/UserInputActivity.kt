@@ -7,6 +7,7 @@ import br.com.cvj.veritytest.R
 import br.com.cvj.veritytest.databinding.ActivityUserInputBinding
 import br.com.cvj.veritytest.model.data.UserInfoResponse
 import br.com.cvj.veritytest.model.repository.user.info.UserInfoApiDataSource
+import br.com.cvj.veritytest.ui.user.profile.UserProfileActivity
 import br.com.cvj.veritytest.util.CustomDialogUtil
 import br.com.cvj.veritytest.util.LocalStorageUtil
 import br.com.cvj.veritytest.util.extension.gone
@@ -34,9 +35,9 @@ class UserInputActivity : AppCompatActivity() {
         retrieveUser()
 
         viewModel.apiSuccess.observe(this) { userInfo ->
+            hideLoading()
             saveUser(userInfo)
             showProfileScreen(userInfo)
-            hideLoading()
         }
 
         viewModel.apiError.observe(this) { hasError ->
@@ -59,9 +60,9 @@ class UserInputActivity : AppCompatActivity() {
         }
     }
 
-    private fun showProfileScreen(userInfo: UserInfoResponse?) {
-        Snackbar.make(this, viewBinding.root, "O doentão do caralho é ${userInfo?.login}", Snackbar.LENGTH_SHORT)
-            .show()
+    private fun showProfileScreen(userInfo: UserInfoResponse) {
+        UserProfileActivity.start(this, userInfo)
+        finish()
     }
 
     private fun showLoading() {
@@ -117,7 +118,7 @@ class UserInputActivity : AppCompatActivity() {
 
     private fun retrieveUser() {
         localStorage.retrieveUser()?.let {
-            showProfileScreen(it)
+            viewModel.onUserSaved(it)
         }
     }
 }

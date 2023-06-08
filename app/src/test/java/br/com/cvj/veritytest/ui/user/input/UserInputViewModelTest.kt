@@ -41,7 +41,6 @@ class UserInputViewModelTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        moshiUtil = MoshiUtil()
     }
 
     @Test
@@ -64,12 +63,10 @@ class UserInputViewModelTest {
         verify(apiSuccessObserver).onChanged(userInfo)
         verify(apiErrorObserver).onChanged(false)
     }
-
 }
 
 class UserMockRepository(
     private val result: NetworkResult<UserInfoResponse>
 ): UserInfoRepository {
     override suspend fun invoke(username: String) = result
-
 }

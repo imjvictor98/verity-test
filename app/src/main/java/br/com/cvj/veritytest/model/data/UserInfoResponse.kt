@@ -3,6 +3,7 @@ package br.com.cvj.veritytest.model.data
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import java.io.Serializable
 
 @JsonClass(generateAdapter = true)
 data class UserInfoResponse(
@@ -68,4 +69,4 @@ data class UserInfoResponse(
     val updatedAt: String? = null,
     @Json(name = "url")
     val url: String? = null
-)
+): Serializable

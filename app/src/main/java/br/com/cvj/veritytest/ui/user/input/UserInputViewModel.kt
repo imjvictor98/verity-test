@@ -8,6 +8,7 @@ import br.com.cvj.veritytest.model.data.UserInfoResponse
 import br.com.cvj.veritytest.model.network.NetworkResult
 import br.com.cvj.veritytest.model.repository.user.info.UserInfoRepository
 import br.com.cvj.veritytest.util.CloseableCoroutineScope
+import br.com.cvj.veritytest.util.CustomIdlingResource
 import kotlinx.coroutines.launch
 
 class UserInputViewModel(
@@ -33,14 +34,21 @@ class UserInputViewModel(
 
 
     fun getUserInfo(username: String) {
+        CustomIdlingResource.increment(this)
         coroutineScope.launch {
             val response = userDataSource.invoke(username)
             if (response !is NetworkResult.Success) {
                 _apiError.value = true
+                CustomIdlingResource.decrement(this)
             } else {
                 _apiSuccess.value = response.data
                 _apiError.value = false
+                CustomIdlingResource.decrement(this)
             }
         }
+    }
+
+    fun onUserSaved(userInfoResponse: UserInfoResponse) {
+        _apiSuccess.value = userInfoResponse
     }
 }
