@@ -1,8 +1,11 @@
 package br.com.cvj.veritytest.ui.user.input
 
 import android.app.Dialog
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import br.com.cvj.veritytest.R
 import br.com.cvj.veritytest.databinding.ActivityUserInputBinding
 import br.com.cvj.veritytest.model.data.UserInfoResponse
@@ -13,9 +16,21 @@ import br.com.cvj.veritytest.util.LocalStorageUtil
 import br.com.cvj.veritytest.util.extension.gone
 import br.com.cvj.veritytest.util.extension.hideKeyboard
 import br.com.cvj.veritytest.util.extension.visible
-import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.launch
+import javax.net.ssl.HttpsURLConnection
 
 class UserInputActivity : AppCompatActivity() {
+
+    companion object {
+        fun startWClearTop(context: Context) {
+            val intent = Intent(context, UserInputActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            }
+            context.startActivity(intent)
+        }
+    }
+
+
     private lateinit var viewBinding: ActivityUserInputBinding
     private lateinit var viewModel: UserInputViewModel
 
@@ -34,16 +49,30 @@ class UserInputActivity : AppCompatActivity() {
 
         retrieveUser()
 
-        viewModel.apiSuccess.observe(this) { userInfo ->
-            hideLoading()
-            saveUser(userInfo)
-            showProfileScreen(userInfo)
-        }
+        lifecycleScope.launch {
+            viewModel.uiState.collect { uiState ->
+                with (uiState) uiState@ {
+                    when (this) {
+                        is UserInputUiState.Initial -> {}
 
-        viewModel.apiError.observe(this) { hasError ->
-            if (hasError) {
-                showToastUserError()
-                hideLoading()
+                        is UserInputUiState.Success -> {
+                            hideLoading()
+                            saveUser(userInfo)
+                            showProfileScreen(userInfo)
+                        }
+
+                        is UserInputUiState.Error -> {
+                            if (showError) {
+                                if (code == HttpsURLConnection.HTTP_NOT_FOUND) {
+                                    showToastUserNotExists()
+                                } else {
+                                    showToastUserError()
+                                }
+                                hideLoading()
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -104,6 +133,20 @@ class UserInputActivity : AppCompatActivity() {
                 title = getString(R.string.user_input_dialog_title),
                 subTitle = getString(R.string.user_input_empty_dialog_description),
                 primaryBtnText = getString(R.string.back_btn),
+                onPrimaryClickListener = {
+                    it.dismiss()
+                }
+            )
+
+        dialog?.show()
+    }
+
+    private fun showToastUserNotExists() {
+        dialog = CustomDialogUtil(this)
+            .buildDialogHorizontal(
+                title = getString(R.string.user_input_dialog_title),
+                subTitle = getString(R.string.user_input_not_exists_dialog_description),
+                primaryBtnText = getString(R.string.ok_btn),
                 onPrimaryClickListener = {
                     it.dismiss()
                 }

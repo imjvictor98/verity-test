@@ -41,4 +41,11 @@ class LocalStorageUtil(context: Context) {
             null
         }
     }
+
+    fun removeUser() {
+        sharedPref
+            .edit()
+            .remove(UserInfo.USER_INFO_STORED)
+            .apply()
+    }
 }

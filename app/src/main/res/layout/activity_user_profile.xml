@@ -1,9 +1,246 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.user.profile.UserProfileActivity">
+    android:orientation="vertical"
+    tools:context=".ui.user.profile.UserProfileActivity"
+    android:padding="@dimen/margin_default"
+    android:background="@color/bkg">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/user_profile_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/user_profile_image_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:cardCornerRadius="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/user_profile_image"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:contentDescription="@null"
+                tools:src="@drawable/img_avatar_default"
+                />
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/user_profile_names_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="@dimen/margin_default"
+            app:layout_constraintStart_toEndOf="@id/user_profile_image_container"
+            app:layout_constraintTop_toTopOf="@id/user_profile_image_container"
+            app:layout_constraintEnd_toStartOf="@id/user_profile_logout">
+
+            <TextView
+                android:id="@+id/user_profile_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/hubot_sans_medium_semi"
+                android:letterSpacing="0.02"
+                android:elegantTextHeight="true"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:lines="1"
+                android:ellipsize="end"
+                tools:text="Fulano" />
+
+            <TextView
+                android:id="@+id/user_profile_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elegantTextHeight="true"
+                android:fontFamily="@font/hubot_sans_medium_semi"
+                android:letterSpacing="0.02"
+                android:lines="1"
+                android:textColor="@color/gray"
+                android:textSize="16sp"
+                tools:text="\@lindosvaldo" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/user_profile_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:tint="@color/white"
+            android:src="@drawable/ic_baseline_logout_24"
+            android:padding="4dp"
+            android:background="?android:selectableItemBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/user_profile_location"
+            tools:text="Rio de Janeiro"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="8dp"
+            android:layout_marginTop="24dp"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/hubot_sans_medium_semi"
+            android:letterSpacing="0.02"
+            android:lines="1"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_profile_image_container"
+            app:drawableStartCompat="@drawable/ic_baseline_location_on_24"
+            app:drawableTint="@color/white_100" />
+
+        <TextView
+            android:id="@+id/user_profile_company"
+            tools:text="\@verity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="8dp"
+            android:layout_marginTop="16dp"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/hubot_sans_medium_semi"
+            android:letterSpacing="0.02"
+            android:lines="1"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_profile_location"
+            app:drawableStartCompat="@drawable/ic_baseline_location_city_24"
+            app:drawableTint="@color/white_100" />
+
+        <TextView
+            android:id="@+id/user_profile_follows"
+            android:text="@string/user_profile_follows_format"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="8dp"
+            android:layout_marginTop="16dp"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/hubot_sans_medium_semi"
+            android:letterSpacing="0.02"
+            android:lines="1"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_profile_company"
+            app:drawableStartCompat="@drawable/ic_baseline_person_24"
+            app:drawableTint="@color/white_100" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/user_profile_repos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elegantTextHeight="true"
+                android:fontFamily="@font/hubot_sans_medium"
+                android:letterSpacing="0.075"
+                android:lines="1"
+                android:text="@string/user_profile_repos_title"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/user_profile_repos_reload_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:tint="@color/white"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="2dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_baseline_refresh_24"
+                android:background="?android:selectableItemBackground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/user_profile_repos_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/list_item_user_profile"
+            tools:itemCount="6"
+            />
+
+        <ProgressBar
+            android:id="@+id/user_profile_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="96dp"
+            android:indeterminate="true"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/white"
+            />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/user_profile_error_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/user_profile_error_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elegantTextHeight="true"
+                android:textAlignment="center"
+                android:fontFamily="@font/hubot_sans_regular_semi"
+                android:layout_marginTop="36dp"
+                android:text="@string/user_profile_error_description"
+                android:textColor="@color/white_100"
+                android:textSize="16sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/user_profile_error_btn"
+                android:text="@string/try_btn"
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <TextView
+            android:id="@+id/user_profile_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elegantTextHeight="true"
+            android:gravity="center"
+            android:visibility="gone"
+            android:fontFamily="@font/hubot_sans_regular_semi"
+            android:letterSpacing="0.075"
+            android:text="@string/user_profile_repos_empty"
+            android:textColor="@color/gray"
+            android:textSize="16sp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

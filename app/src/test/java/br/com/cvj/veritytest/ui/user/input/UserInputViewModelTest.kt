@@ -68,5 +68,5 @@ class UserInputViewModelTest {
 class UserMockRepository(
     private val result: NetworkResult<UserInfoResponse>
 ): UserInfoRepository {
-    override suspend fun invoke(username: String) = result
+    override suspend fun getUser(username: String) = result
 }

@@ -1,35 +1,38 @@
-package br.com.cvj.playground.util.extension
+package br.com.cvj.veritytest.util.extension
 
 
-import android.graphics.drawable.BitmapDrawable
-import android.view.View
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toBitmap
+import br.com.cvj.veritytest.R
 import com.bumptech.glide.Glide
 
-fun ImageView.setImageUrl(url: String, @DrawableRes placeholderLoading: Int) {
-    val placeholderBitmap =
-        ContextCompat.getDrawable(this.context, placeholderLoading)?.toBitmap(200, 200)
+fun ImageView.setImageUrl(
+    url: String,
+    @DrawableRes placeholderLoading: Int = R.drawable.ic_loading,
+    @DrawableRes error: Int = R.drawable.img_avatar_default,
+) {
 
     Glide
         .with(this)
         .load(url)
-        .placeholder(BitmapDrawable(resources, placeholderBitmap))
+        .placeholder(placeholderLoading)
         .into(this)
+        .onLoadFailed(ContextCompat.getDrawable(this.context, error))
 }
 
-fun AppCompatImageView.setImageUrl(url: String, @DrawableRes placeholderLoading: Int) {
-    val placeholderBitmap =
-        ContextCompat.getDrawable(this.context, placeholderLoading)?.toBitmap(200, 200)
+fun AppCompatImageView.setImageUrl(
+    url: String, @DrawableRes placeholderLoading: Int = R.drawable.ic_loading,
+    @DrawableRes error: Int = R.drawable.img_avatar_default,
+) {
 
     Glide
         .with(this)
         .load(url)
-        .placeholder(BitmapDrawable(resources, placeholderBitmap))
+        .placeholder(placeholderLoading)
         .into(this)
+        .onLoadFailed(ContextCompat.getDrawable(this.context, error))
 }
 
 fun ImageView.setGif(@DrawableRes gifId: Int) {

@@ -1,6 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:background="@color/bkg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="8dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/list_item_user_profile_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elegantTextHeight="true"
+        android:fontFamily="@font/hubot_sans_medium"
+        android:letterSpacing="0.075"
+        android:maxLines="3"
+        tools:text="android-code-labs"
+        android:textColor="@color/white"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/list_item_user_profile_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elegantTextHeight="true"
+        android:fontFamily="@font/hubot_sans_regular"
+        android:letterSpacing="0.075"
+        android:maxLines="3"
+        android:layout_marginTop="2dp"
+        tools:text="android-code-labs"
+        android:textColor="@color/gray"
+        android:textSize="14sp"
+        />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/list_item_user_profile_info_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/user_profile_stars"
+            tools:text="5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/hubot_sans_regular"
+            android:letterSpacing="0.02"
+            android:lines="1"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:drawablePadding="8dp"
+            app:drawableStartCompat="@drawable/ic_baseline_star_24" />
+
+        <TextView
+            android:id="@+id/user_profile_language"
+            tools:text="Java"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/hubot_sans_regular"
+            android:letterSpacing="0.02"
+            android:lines="1"
+            android:layout_marginStart="12dp"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:drawablePadding="8dp"
+            app:drawableStartCompat="@drawable/ic_baseline_circle_24" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <com.google.android.material.divider.MaterialDivider
+        style="@style/Widget.MaterialComponents.MaterialDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        app:dividerColor="@color/white"
+        />
+
+</LinearLayout>

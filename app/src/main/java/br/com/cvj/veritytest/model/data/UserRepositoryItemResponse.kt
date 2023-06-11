@@ -4,11 +4,9 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import java.io.Serializable
 
-data class UserRepositoriesResponse(
 
-)
 @JsonClass(generateAdapter = true)
-data class UserProfileReposItem(
+data class UserRepositoryItemResponse(
     @Json(name = "allow_forking")
     val allowForking: Boolean? = null,
     @Json(name = "archive_url")

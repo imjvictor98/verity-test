@@ -6,7 +6,7 @@ import br.com.cvj.veritytest.model.network.handleApi
 import br.com.cvj.veritytest.model.network.Api
 
 class UserInfoApiDataSource: UserInfoRepository {
-    override suspend fun invoke(username: String): NetworkResult<UserInfoResponse> {
+    override suspend fun getUser(username: String): NetworkResult<UserInfoResponse> {
         return handleApi { Api.services.getUserInfo(username) }
     }
 }

@@ -2,6 +2,8 @@
     <string name="app_name">Verity Test</string>
     <string name="continue_btn">Continuar</string>
     <string name="back_btn">Voltar</string>
+    <string name="ok_btn">Ok</string>
+    <string name="try_btn">Tentar novamente</string>
 
     <!-- User Input -->
     <string name="user_input_header">Em busca do conhecimento</string>
@@ -10,4 +12,14 @@
     <string name="user_input_dialog_title">Oops!</string>
     <string name="user_input_dialog_description">Houve um erro ao tentar buscar seu usário.</string>
     <string name="user_input_empty_dialog_description">O nome do seu usário não pode ser vazio.</string>
+    <string name="user_input_not_exists_dialog_description">O nome do usuário não existe.</string>
+
+    <!-- User Profile -->
+    <string name="user_profile_login_format">\<![CDATA[<b>@</b>]]>%s</string>
+    <string name="user_profile_follows_format"><![CDATA[<b>%d</b>]]> <![CDATA[<font color=#A9A9A9>seguidores</font>]]>  <![CDATA[<b>%d</b>]]> <![CDATA[<font color=#A9A9A9>seguindo</font>]]></string>
+    <string name="user_profile_repos_title">repos</string>
+    <string name="user_profile_repos_empty">Não existem repositórios para esse usuário ☹️</string>
+    <string name="user_profile_repos_list_no_description"><![CDATA[<em>Sem descrição</em>]]></string>
+    <string name="user_profile_repos_list_no_language"><![CDATA[<em>Sem linguagem</em>]]></string>
+    <string name="user_profile_error_description">Não foi possível buscar seus repositórios no momento.</string>
 </resources>
