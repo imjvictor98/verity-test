@@ -5,19 +5,22 @@ import timber.log.Timber
 
 object CustomIdlingResource {
     private const val RESOURCE = "GLOBAL"
+    var isEnable = false
 
     @JvmField
     val countingIdlingResource = CountingIdlingResource(RESOURCE, true)
-    var counter = 0
+    private var counter = 0
 
     fun increment(where: Any) {
-        counter.plus(1)
-        countingIdlingResource.increment()
-        printDebugMessage("async --> ${where::class.java.name}")
+        if (isEnable) {
+            counter.plus(1)
+            countingIdlingResource.increment()
+            printDebugMessage("async --> ${where::class.java.name}")
+        }
     }
 
     fun decrement(where: Any) {
-        if (!countingIdlingResource.isIdleNow) {
+        if (!countingIdlingResource.isIdleNow && isEnable) {
             if (counter > 0) counter.minus(1)
             countingIdlingResource.decrement()
             printDebugMessage("async <-- ${where::class.java.name}")
@@ -25,7 +28,7 @@ object CustomIdlingResource {
     }
 
     fun decrementAll(where: Any) {
-        if (!countingIdlingResource.isIdleNow) {
+        if (!countingIdlingResource.isIdleNow && isEnable) {
             for (i in counter downTo 0 step 1) {
                 decrement(where::class.java.name)
             }
@@ -34,7 +37,7 @@ object CustomIdlingResource {
     }
 
     private fun printDebugMessage(debugMessage: String? = null) {
-        if (debugMessage != null) {
+        if (debugMessage != null && isEnable) {
             Timber.tag("CountingIdlingResource").d(debugMessage)
         }
     }

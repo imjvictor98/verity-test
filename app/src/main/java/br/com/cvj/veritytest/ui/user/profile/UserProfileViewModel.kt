@@ -7,17 +7,20 @@ import br.com.cvj.veritytest.model.network.NetworkResult
 import br.com.cvj.veritytest.model.repository.user.profile.UserProfileRepository
 import br.com.cvj.veritytest.util.CloseableCoroutineScope
 import br.com.cvj.veritytest.util.CustomIdlingResource
+import br.com.cvj.veritytest.util.DefaultDispatcherProvider
 import br.com.cvj.veritytest.util.exception.IllegalViewModelException
 import br.com.cvj.veritytest.util.extension.whenIsEmpty
 import br.com.cvj.veritytest.util.extension.whenIsNotEmpty
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class UserProfileViewModel(
     private val userProfileDataSource: UserProfileRepository,
-    private val coroutineScope: CloseableCoroutineScope = CloseableCoroutineScope()
-) : ViewModel(coroutineScope) {
+    private val dispatcher: CoroutineDispatcher = DefaultDispatcherProvider().main
+) : ViewModel() {
 
     class ViewModelFactory(private val userProfileDataSource: UserProfileRepository) :
         ViewModelProvider.Factory {
@@ -38,7 +41,7 @@ class UserProfileViewModel(
         _uiState.value = UserProfileUiState.Loading(true)
         _uiState.value = UserProfileUiState.Reload(false)
 
-        coroutineScope.launch {
+        CoroutineScope(dispatcher).launch {
             val response = userProfileDataSource.getRepositories(username)
 
             with(response) networkResult@ {

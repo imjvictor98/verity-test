@@ -26,4 +26,11 @@ object RawUtil {
         return null
     }
 
+    fun getJson(resources: Resources, @RawRes jsonFile: Int): String {
+        val inputStream = resources.openRawResource(jsonFile)
+        val jsonString = inputStream.bufferedReader().use { it.readText() }
+
+        return jsonString
+    }
+
 }
