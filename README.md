@@ -33,8 +33,6 @@ O Verity Test é um projeto que tem o objetivo de mostrar uma lista de repositó
 ## 🎨 UI/UX 
 O layout, icones e cores estão no projeto do [Figma](https://www.figma.com/file/HSvnXXF82AM83evQW6Y7d7/Teste-t%C3%A9cnico---Verity---UI?type=design&node-id=0%3A1&t=plMp7gV5eFMSP7O7-1).
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FHSvnXXF82AM83evQW6Y7d7%2FTeste-t%25C3%25A9cnico---Verity---UI%3Ftype%3Ddesign%26node-id%3D0%253A1%26t%3DplMp7gV5eFMSP7O7-1" allowfullscreen></iframe>
-
 ## 🛠️ Como configurar o projeto?
 
 Para desenvolver, a versão mais atualizada do Android Studio é necessária. A última versão pode ser encontrada para
