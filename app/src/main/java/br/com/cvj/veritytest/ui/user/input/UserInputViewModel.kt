@@ -40,9 +40,8 @@ class UserInputViewModel(
     val uiState: StateFlow<UserInputUiState> = _uiState
 
     fun getUserInfo(username: String) {
-        CustomIdlingResource.increment(this)
-
         CoroutineScope(dispatcher).launch {
+            CustomIdlingResource.increment(this)
             val response = userInputDataSource.getUser(username)
 
             response.onSuccess {

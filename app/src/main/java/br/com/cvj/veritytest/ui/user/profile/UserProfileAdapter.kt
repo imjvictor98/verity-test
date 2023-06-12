@@ -26,13 +26,13 @@ class UserProfileAdapter(items: List<UserRepositoryItemResponse>):
 
     override fun getLayoutRes() = R.layout.list_item_user_profile
 
-    inner class ViewHolder(itemView: ListItemUserProfileBinding):
-    BaseViewHolder<UserRepositoryItemResponse>(itemView.root) {
-        private val contextView: Context = itemView.root.context
-        private val repoNameText: TextView = itemView.listItemUserProfileName
-        private val repoDescText: TextView = itemView.listItemUserProfileDescription
-        private val repoStartText: TextView = itemView.userProfileStars
-        private val repoLangText: TextView = itemView.userProfileLanguage
+    inner class ViewHolder(val binding: ListItemUserProfileBinding):
+    BaseViewHolder<UserRepositoryItemResponse>(binding.root) {
+        private val contextView: Context = binding.root.context
+        private val repoNameText: TextView = binding.listItemUserProfileName
+        private val repoDescText: TextView = binding.listItemUserProfileDescription
+        private val repoStartText: TextView = binding.userProfileStars
+        private val repoLangText: TextView = binding.userProfileLanguage
 
         override fun bind(data: UserRepositoryItemResponse) {
             bindData(data)

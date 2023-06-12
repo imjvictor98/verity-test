@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModelProvider
 import br.com.cvj.veritytest.model.data.UserRepositoryItemResponse
 import br.com.cvj.veritytest.model.network.NetworkResult
 import br.com.cvj.veritytest.model.repository.user.profile.UserProfileRepository
-import br.com.cvj.veritytest.util.CloseableCoroutineScope
 import br.com.cvj.veritytest.util.CustomIdlingResource
 import br.com.cvj.veritytest.util.DefaultDispatcherProvider
 import br.com.cvj.veritytest.util.exception.IllegalViewModelException
@@ -41,6 +40,7 @@ class UserProfileViewModel(
         _uiState.value = UserProfileUiState.Loading(true)
         _uiState.value = UserProfileUiState.Reload(false)
 
+        CustomIdlingResource.increment(this)
         CoroutineScope(dispatcher).launch {
             val response = userProfileDataSource.getRepositories(username)
 

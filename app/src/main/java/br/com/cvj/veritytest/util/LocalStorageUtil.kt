@@ -11,7 +11,7 @@ class LocalStorageUtil(context: Context) {
         private const val VERITY_STORAGE = "VERITY_STORAGE"
         private val moshi = MoshiWrapper.moshi
 
-        private object UserInfo {
+        object UserInfo {
             const val USER_INFO_STORED = "USER_INFO_STORED"
             val jsonAdapter: JsonAdapter<UserInfoResponse> =
                 moshi.adapter(UserInfoResponse::class.java)

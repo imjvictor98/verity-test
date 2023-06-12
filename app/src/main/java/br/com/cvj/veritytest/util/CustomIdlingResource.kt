@@ -5,7 +5,8 @@ import timber.log.Timber
 
 object CustomIdlingResource {
     private const val RESOURCE = "GLOBAL"
-    var isEnable = false
+    //Ativar para instrumented tests
+    private var isEnable = true
 
     @JvmField
     val countingIdlingResource = CountingIdlingResource(RESOURCE, true)
